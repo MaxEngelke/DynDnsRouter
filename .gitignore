@@ -1,0 +1,6 @@
+*.cfg
+*.cl
+
+__pycache__
+
+test_install_dir

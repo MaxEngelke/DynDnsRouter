@@ -43,7 +43,7 @@ apt-get install pip
 #incstall crypto for py
 echo "Install python modules"
 pip3 install cryptography
-pip3 install psutils
+pip3 install psutil
 
 #create keys
 python "$INSTALL_DIR/dyndns_utils/crypto_utils.py" "$INSTALL_DIR"

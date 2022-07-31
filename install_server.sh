@@ -46,7 +46,7 @@ pip3 install cryptography
 pip3 install psutil
 
 #create keys
-python "$INSTALL_DIR/dyndns_utils/crypto_utils.py" "$INSTALL_DIR"
+python3 "$INSTALL_DIR/dyndns_utils/crypto_utils.py" "$INSTALL_DIR"
 
 #write default config file for client
 CONFIG_FILE="$INSTALL_DIR/server.cfg"

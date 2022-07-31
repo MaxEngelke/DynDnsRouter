@@ -1,8 +1,6 @@
-from socket import socket
 import unittest
-import ipaddress
-import socket
 import os
+
 from dyndns_utils import config_utils
 
 class TestConfigUtils(unittest.TestCase):
@@ -52,13 +50,7 @@ class TestConfigUtils(unittest.TestCase):
         self.assertEqual(conf_test['tunnel_ports'], testPort)
 
 
-    def test_get_ip_addres(self):
-        ip = ipaddress.ip_address(config_utils.get_ip_address_as_string())
-        self.assertTrue(ip.is_global)
-
-    def test_get_ip_version(self):
-        self.assertEqual(socket.AF_INET, config_utils.get_ip_version('192.168.0.1'))
-        self.assertEqual(socket.AF_INET6, config_utils.get_ip_version('::1'))
+    
 
 
 if(__name__ == '__main__'):

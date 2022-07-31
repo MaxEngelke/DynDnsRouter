@@ -31,6 +31,7 @@ class TestClientUtils(unittest.TestCase):
                 cf.write('socat_pids_tcp=12451-12656:73085\n')
                 cf.write('socat_pids_udp=\n')
 
+
     @classmethod
     def tearDownClass(cls):
         clients_dir = cls.get_clients_dir()
@@ -96,6 +97,7 @@ class TestClientUtils(unittest.TestCase):
 
         os.remove(os.path.join(clients_dir, 'test_client_3.cl'))
         socat_utils.kill_all_socat_processes()
+
 
     def test_change_clients_ip(self):
 

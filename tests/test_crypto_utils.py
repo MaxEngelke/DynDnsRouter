@@ -11,12 +11,14 @@ class TestCryptoUtils(unittest.TestCase):
         root_dir = os.path.dirname(__file__)
         return os.path.join(root_dir, 'certs')
 
+
     @classmethod
     def setUpClass(cls):
 
         certs_dir = cls.get_certs_dir()
         if os.path.isdir(certs_dir) == False:
             os.mkdir(certs_dir)
+
 
     @classmethod
     def tearDownClass(cls):
@@ -28,6 +30,7 @@ class TestCryptoUtils(unittest.TestCase):
                 os.remove(os.path.join(certs_dir, file))
 
             os.rmdir(certs_dir)
+
 
     def test_create_key(self):
         private, public = crypto_utils.create_key(4096, 65537)

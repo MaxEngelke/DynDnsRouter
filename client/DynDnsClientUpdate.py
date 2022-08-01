@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-import imp
 import socket
 import os
 import logging

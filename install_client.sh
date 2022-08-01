@@ -51,8 +51,8 @@ pip3 install cryptography
 
 CLIENT_USER="dyndnsclientuser"
 #create user for service
-useradd -r -s /bin/false $SERVER_USER
-chown -R $SERVER_USER:$SERVER_USER "$INSTALL_DIR"
+useradd -r -s /bin/false $CLIENT_USER
+chown -R $CLIENT_USER:$CLIENT_USER "$INSTALL_DIR"
 
 #install cron job
 
@@ -78,6 +78,6 @@ rm -rf $INSTALL_DIR
 
 crontab -u $CLIENT_USER -l | grep -v '$COMMAND'  | crontab -u $CLIENT_USER -
 
-userdel $SERVER_USER
+userdel $CLIENT_USER
 
 " >> "uninstall_client.sh"

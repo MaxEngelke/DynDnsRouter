@@ -28,10 +28,18 @@ cp -r "$CURRENT_DIR/dyndns_utils" "$INSTALL_DIR"
 #write default config file for client
 CONFIG_FILE="$INSTALL_DIR/client.cfg"
 
+read -p "Enter server ip : " SERVER_IP
+
+read -p "Enter server port (50110) : " SERVER_PORT
+
+if [ -z "$SERVER_PORT" ]; then
+    SERVER_PORT=50110
+fi
+
 echo "Creating server config file $CONFIG_FILE"
 
-echo "server_ip=
-server_port=
+echo "server_ip=$SERVER_IP
+server_port=$SERVER_PORT
 client=
 tunnel_ports_tcp=
 tunnel_ports_udp=

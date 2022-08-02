@@ -11,7 +11,7 @@ root_dir = os.path.dirname(__file__)
 config_file = os.path.join(root_dir, 'client.cfg')
 log_file = os.path.join(root_dir, 'DynDnsClientUpdate.log')
 
-logging.basicConfig(filename=log_file, level=logging.DEBUG, format='%(asctime)s %(message)s')
+logging.basicConfig(filename=log_file, level=logging.INFO, format='%(asctime)s %(message)s')
 
 def encode_message(config_dict, msg):
     pk = crypto_utils.read_public_key(config_dict['public_key'])

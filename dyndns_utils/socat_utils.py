@@ -26,7 +26,7 @@ def start_socat_process_ipv4_to_ipv6_tunnel(protocol, portIn, destIp, portOut):
     source = portIn + ",fork,reuseaddr"
     protocolOut = protocol.upper() + '6'
     dest = '[{0}]:{1}'.format(destIp, portOut)
-    logging.info("Start socat with ${protocolIn} from ${source} to ${dest} with ${protocolOut}")
+    logging.info(f"Start socat with ${protocolIn} from ${source} to ${dest} with ${protocolOut}")
     return start_socat_process_tunnel(protocolIn, source, protocolOut, dest)
 
 
@@ -35,7 +35,7 @@ def start_socat_process_ipv6_to_ipv6_tunnel(protocol, portIn, destIp, portOut):
     source = portIn + ",fork,reuseaddr"
     protocolOut = protocol.upper() + '6'
     dest = '[{0}]:{1}'.format(destIp, portOut)
-    logging.info("Start socat with ${protocolIn} from ${source} to ${dest} with ${protocolOut}")
+    logging.info(f"Start socat with ${protocolIn} from ${source} to ${dest} with ${protocolOut}")
     return start_socat_process_tunnel(protocolIn, source, protocolOut, dest)
 
 

@@ -12,7 +12,7 @@ config_file = os.path.join(root_dir, 'server.cfg')
 clients_dir = os.path.join(root_dir, 'clients')
 log_file = os.path.join(root_dir, 'DynDnsServer.log')
 
-logging.basicConfig(filename=log_file, level=logging.DEBUG, format='%(asctime)s %(message)s')
+logging.basicConfig(filename=log_file, level=logging.INFO, format='%(asctime)s %(message)s')
 
 
 def decode_message(config_dict, msg):

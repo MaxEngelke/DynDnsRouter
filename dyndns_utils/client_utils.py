@@ -82,7 +82,7 @@ def process_ports(client_dict, port_pid_dict, protocol):
         new_port_list = [ client_dict['tunnel_ports_' + protocol] ]
 
     for port_close in port_pid_dict.values():
-        logging.info('Closing port ${port_close}')
+        logging.info(f'Closing port ${port_close}')
         socat_utils.terminate_process(int(port_close))  
 
     active_ports = ''
@@ -104,9 +104,10 @@ def process_ports(client_dict, port_pid_dict, protocol):
 
                 if err is None:
                     active_ports += ports + ':' + str(pid) + ','
-                    
+                    client_name = client_dict['client']
+                    logging.info(f"Openend ports ${active_ports} for client ${client_name}")
                 else:
-                    logging.error("Error opening port on client ${client_dict}! ERR: ${err}")
+                    logging.error(f"Error opening port on client ${client_dict}! ERR: ${err}")
             
     client_dict['socat_pids_' + protocol] = active_ports[:-1]
            

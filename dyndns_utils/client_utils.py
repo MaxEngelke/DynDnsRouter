@@ -82,7 +82,7 @@ def process_ports(client_dict, port_pid_dict, protocol):
         new_port_list = [ client_dict['tunnel_ports_' + protocol] ]
 
     for port_close in port_pid_dict.values():
-        logging.info(f'Closing port ${port_close}')
+        logging.info(f'Closing socate process ${port_close}')
         socat_utils.terminate_process(int(port_close))  
 
     active_ports = ''

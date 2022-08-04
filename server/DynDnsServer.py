@@ -21,10 +21,10 @@ def decode_message(config_dict, msg):
 
 
 def process_message(msg, sender, config_dict):
-    msg_decrypt = decode_message(config_dict, msg)
     try:
+        msg_decrypt = decode_message(config_dict, msg)
         client_utils.process_client_from_message(msg_decrypt, clients_dir)
-        logging.info('Client processed and saved...')
+        logging.info(f'Client ${sender} processed and saved...')
     except:
         logging.error('Message invalid...')
 

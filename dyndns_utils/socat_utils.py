@@ -3,6 +3,9 @@ import subprocess
 import psutil
 import time
 import logging
+import socket
+
+from dyndns_utils import ip_utils
 
 def get_socat_pids():
     socat_pids = []
@@ -13,28 +16,16 @@ def get_socat_pids():
     return socat_pids
 
 
-def start_socat_process_ip_to_ipv6_tunnel(protocol, portIn, destIp, portOut):
+def start_socat_process(protocol, portIn, destIp, portOut):
     protocolIn = protocol.upper() + '-LISTEN'
     source = portIn + ",fork,reuseaddr"
-    protocolOut = protocol.upper() + '6'
+    if ip_utils.get_ip_version(destIp) == socket.AF_INET:
+        protocolOut = protocol.upper() + '4'
+    else:
+        protocolOut = protocol.upper() + '6'
+
     dest = '[{0}]:{1}'.format(destIp, portOut)
-    return start_socat_process_tunnel(protocolIn, source, protocolOut, dest)
 
-
-def start_socat_process_ipv4_to_ipv6_tunnel(protocol, portIn, destIp, portOut):
-    protocolIn = protocol.upper() + '4-LISTEN'
-    source = portIn + ",fork,reuseaddr"
-    protocolOut = protocol.upper() + '6'
-    dest = '[{0}]:{1}'.format(destIp, portOut)
-    logging.info(f"Start socat with ${protocolIn} from ${source} to ${dest} with ${protocolOut}")
-    return start_socat_process_tunnel(protocolIn, source, protocolOut, dest)
-
-
-def start_socat_process_ipv6_to_ipv6_tunnel(protocol, portIn, destIp, portOut):
-    protocolIn = protocol.upper() + '6-LISTEN'
-    source = portIn + ",fork,reuseaddr"
-    protocolOut = protocol.upper() + '6'
-    dest = '[{0}]:{1}'.format(destIp, portOut)
     logging.info(f"Start socat with ${protocolIn} from ${source} to ${dest} with ${protocolOut}")
     return start_socat_process_tunnel(protocolIn, source, protocolOut, dest)
 

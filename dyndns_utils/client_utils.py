@@ -99,7 +99,7 @@ def process_ports(client_dict, port_pid_dict, protocol):
                 open_port = True
 
             if open_port:
-                pid, err = socat_utils.start_socat_process_ip_to_ipv6_tunnel(protocol, src_dest_ports[0],
+                pid, err = socat_utils.start_socat_process(protocol, src_dest_ports[0],
                                                                         client_dict['current_ip'], src_dest_ports[1])
 
                 if err is None:

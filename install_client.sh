@@ -64,7 +64,7 @@ chown -R $CLIENT_USER:$CLIENT_USER "$INSTALL_DIR"
 
 #install cron job
 
-COMMAND="python $INSTALL_DIR/DynDnsClientUpdate.py"
+COMMAND="python3 $INSTALL_DIR/DynDnsClientUpdate.py"
 
 grep -qi "$CLIENT_USER" /etc/cron.allow
 
@@ -72,7 +72,7 @@ if [ $? != 0 ]; then
     echo "$CLIENT_USER" >> /etc/cron.allow
 fi
 
-(crontab -u $CLIENT_USER -l ; echo "0 * * * * $COMMAND") | crontab -u $CLIENT_USER -
+(crontab -u $CLIENT_USER -l ; echo "* * * * * $COMMAND") | crontab -u $CLIENT_USER -
 
 #create uninstall_client.sh
 
